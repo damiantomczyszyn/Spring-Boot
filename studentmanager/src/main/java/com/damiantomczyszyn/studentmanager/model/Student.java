@@ -1,6 +1,6 @@
 package com.damiantomczyszyn.studentmanager.model;
 
-import jakarta.annotation.Nullable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +10,8 @@ import lombok.Setter;
 
 
 @Entity
-@Getter@Setter
+@Getter
+@Setter
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
