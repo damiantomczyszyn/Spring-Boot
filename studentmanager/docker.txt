@@ -1,0 +1,2 @@
+docker run -p 3307:3306 --name studentdatabase -e MYSQL_ROOT_PASSWORD=rootstudent -e MYSQL_DATABASE=students -d mysql - start docker container
+create and connect to network
