@@ -1,6 +1,7 @@
 package com.damiantomczyszyn.studentmanager.model;
 
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,11 +19,7 @@ public class Student {
     private Long id;
 
     private String name;
-
-
-
-
-  /*  @Nullable
+    @Nullable
     private Integer age;
     @Nullable
     private String lastName;
@@ -31,6 +28,6 @@ public class Student {
     @Nullable
     private String phoneNumber;
 
-   */
-
+    public Student() {
+    }
 }
