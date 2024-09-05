@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +20,7 @@ public class TaskController {
     }
 
     //ResponseEntity<List<Task>> readAllTasks() //List<Task> zamiast response entity
-    @RequestMapping(method = RequestMethod.GET, path = "/tasks")
+    @RequestMapping(method = RequestMethod.GET, path = "/tasks1")
     ResponseEntity<?> readAllTasks(){
         //Resources
         logger.warn("Exposing all the tasks!");
@@ -34,6 +32,12 @@ public class TaskController {
         logger.warn("Exposing all the tasks!");
         return ResponseEntity.ok(repository.findAll());
     }
+
+    @PostMapping("/tasks")
+    public ResponseEntity<List<Task>> createTasks(@RequestBody List<Task> tasks) {
+       return ResponseEntity.ok(repository.saveAll(tasks));
+    }
+
 
 
 }
