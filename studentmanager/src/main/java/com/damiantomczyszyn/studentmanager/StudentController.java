@@ -2,11 +2,7 @@ package com.damiantomczyszyn.studentmanager;
 
 import com.damiantomczyszyn.studentmanager.model.Student;
 import com.damiantomczyszyn.studentmanager.model.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class StudentController {
@@ -23,6 +19,12 @@ public class StudentController {
         student.setName("Sans");
         return repository.save(student);
     }
+
+    @PostMapping("/student/save2")
+    public Student createPostStudent(@RequestBody Student student){
+        return repository.save(student);
+    }
+
     @RequestMapping("/student/save2")
     public Student createStudent2(@RequestBody Student student){
         return repository.save(student);
@@ -37,6 +39,10 @@ public class StudentController {
     @RequestMapping("/student/find")
     public Student findStudent(){
         return repository.findByEmail("examplemail@outlook.com");
+    }
+    @RequestMapping("/student/find/1")
+    public Student findStudent2(@RequestParam("email") String email){
+        return repository.findByEmail(email);
     }
 
 
