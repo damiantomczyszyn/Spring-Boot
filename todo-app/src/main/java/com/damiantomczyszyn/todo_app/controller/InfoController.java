@@ -1,6 +1,7 @@
 package com.damiantomczyszyn.todo_app.controller;
 
 
+import com.damiantomczyszyn.todo_app.TaskConfigurationProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -10,16 +11,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InfoController {
 
-    @Autowired
+
     private DataSourceProperties dataSource;
-    @Value("${my.prop}")
-    private String myProp;
+    private TaskConfigurationProperties myProp;
+
+    public InfoController(TaskConfigurationProperties  myProp, DataSourceProperties dataSource) {
+        this.myProp = myProp;
+        this.dataSource = dataSource;
+    }
+
     @GetMapping("/info/url")
     String url(){
     return dataSource.getUrl();
     }
     @GetMapping("/info/prop")
-    String myProp(){
-    return myProp;
+    boolean myProp(){
+    return myProp.isAllowMultipleTasksFromTemplate();
     }
 }
