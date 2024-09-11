@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS task (
+    id BIGINT PRIMARY KEY,
+    description VARCHAR(255) NOT NULL,
+    done BOOLEAN NOT NULL
+);
